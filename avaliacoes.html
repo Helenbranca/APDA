@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Avaliações - APDA</title>
+</head>
+<body>
+    <header>
+        <h1>APDA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="avaliacoes.html">Avaliações</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="produto.html">Produtos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Avaliações dos Clientes</h2>
+        <div class="evaluation-container">
+            <h1>Deixe sua Avaliação</h1>
+            <form id="avaliacaoForm" onsubmit="event.preventDefault(); enviarAvaliacao();">
+                <input type="text" id="nome" placeholder="Seu Nome" required>
+                <input type="number" id="rating" placeholder="Avaliação (1-5)" min="1" max="5" required>
+                <textarea id="mensagem" placeholder="Sua Mensagem" required></textarea>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+</main>
+        
+<script>
+    function enviarAvaliacao() {
+        const nome = document.getElementById('nome').value;
+        const mensagem = document.getElementById('mensagem').value;
+        const rating = document.getElementById('rating').value;
+
+        const textoWhatsApp = `Avaliação de ${nome}: ${mensagem} - Classificação: ${rating}`;
+        const numeroWhatsApp = '555535512059'; // Substitua pelo número de WhatsApp desejado
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoWhatsApp)}`;
+
+        window.open(urlWhatsApp, '_blank'); // Abre o WhatsApp em uma nova aba
+        document.getElementById('avaliacaoForm').reset(); // Limpa o formulário
+    }
+</script>
+</head>
+    
+
+    <footer>
+
+        <p>Conecte-se conosco:</p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/share/1FSkS16wtR/" target="_blank">
+            <img src="https://img.icons8.com/color/48/4267B2/facebook-new.png" alt="Facebook">
+          </a>
+          
+                  <a href="https://api.whatsapp.com/send?phone=555535512059&text=Olá,%20gostaria%20de%20saber%20mais%20sobre...">
+            <img src="https://img.icons8.com/color/48/007bff/whatsapp.png" alt="WhatsApp"> </a>
+          </a>
+    </footer>
+</body>
+</html>
